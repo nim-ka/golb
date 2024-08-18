@@ -7,6 +7,9 @@
         update_cache: yes
 
     - import_role:
+        name: share
+
+    - import_role:
         name: samba
 
     - import_role:

@@ -9,8 +9,8 @@
 
 - name: Copy Samba configuration file
   become: yes
-  copy:
-    src: roles/samba/files/smb.conf
+  template:
+    src: roles/samba/templates/smb.conf.j2
     dest: /etc/samba/smb.conf
 
 - name: Create user golb

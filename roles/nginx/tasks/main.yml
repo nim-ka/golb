@@ -6,8 +6,8 @@
 
 - name: Copy nginx site configuration
   become: yes
-  copy:
-    src: roles/nginx/files/golb
+  template:
+    src: roles/nginx/templates/golb.j2
     dest: /etc/nginx/sites-available/golb
 
 - name: Disable default site
