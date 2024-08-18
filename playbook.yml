@@ -1,0 +1,6 @@
+- name: Golb setup
+  hosts: vmhosts
+  tasks:
+    - name: Import Samba role
+      import_role:
+        name: samba

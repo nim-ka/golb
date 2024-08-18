@@ -1,0 +1,22 @@
+- name: Update sources and install Samba
+  become: yes
+  apt:
+    name: samba
+    state: latest
+    update_cache: yes
+
+- name: Copy Samba configuration file
+  become: yes
+  copy:
+    src: roles/samba/files/smb.conf
+    dest: /etc/samba/smb.conf
+
+- name: Create user golb
+  become: yes
+  user:
+    name: golb
+
+- name: Remove SMB password requirement for user golb
+  become: yes
+  command: smbpasswd -a -n golb
+  notify: Restart Samba
