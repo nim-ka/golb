@@ -7,8 +7,8 @@
 - name: Copy nginx site configuration
   become: yes
   template:
-    src: roles/nginx/templates/golb.j2
-    dest: /etc/nginx/sites-available/golb
+    src: roles/nginx/templates/share.j2
+    dest: /etc/nginx/sites-available/share
 
 - name: Disable default site
   become: yes
@@ -16,10 +16,10 @@
     path: /etc/nginx/sites-enabled/default
     state: absent
 
-- name: Enable golb site
+- name: Enable share site
   become: yes
   file:
-    path: /etc/nginx/sites-enabled/golb
+    path: /etc/nginx/sites-enabled/share
     state: link
-    src: /etc/nginx/sites-available/golb
+    src: /etc/nginx/sites-available/share
   notify: Restart nginx

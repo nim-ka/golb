@@ -4,4 +4,6 @@ vmhosts:
       ansible_host: 127.0.0.1
       ansible_port: 2222
       ansible_user: pi
+      samba_user: golb
+      server_name: golb
       share_dir: /media/golb

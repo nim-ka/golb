@@ -18,14 +18,14 @@
    usershare allow guests = yes
 
 [sharing_table]
-   comment = GOLB
+   comment = {{ server_name }}
 
    path = {{ share_dir }}
    browsable = yes
    writeable = yes
 
    guest ok = yes
-   guest account = golb
+   guest account = {{ samba_user }}
 
    create mask = 755
    directory mask = 755

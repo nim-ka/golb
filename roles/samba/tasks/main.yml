@@ -13,12 +13,12 @@
     src: roles/samba/templates/smb.conf.j2
     dest: /etc/samba/smb.conf
 
-- name: Create user golb
+- name: "Create Samba user {{ samba_user }}"
   become: yes
   user:
-    name: golb
+    name: "{{ samba_user }}"
 
-- name: Remove SMB password requirement for user golb
+- name: "Remove SMB password requirement for Samba user {{ samba_user }}"
   become: yes
-  command: smbpasswd -a -n golb
+  command: "smbpasswd -a -n {{ samba_user }}"
   notify: Restart Samba
