@@ -1,9 +1,8 @@
-- name: Update sources and install Samba
+- name: Install Samba
   become: yes
   apt:
     name: samba
     state: latest
-    update_cache: yes
 
 - name: Copy Samba configuration file
   become: yes

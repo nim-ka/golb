@@ -1,0 +1,25 @@
+- name: Install nginx
+  become: yes
+  apt:
+    name: nginx
+    state: latest
+
+- name: Copy nginx site configuration
+  become: yes
+  copy:
+    src: roles/nginx/files/golb
+    dest: /etc/nginx/sites-available/golb
+
+- name: Disable default site
+  become: yes
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Enable golb site
+  become: yes
+  file:
+    path: /etc/nginx/sites-enabled/golb
+    state: link
+    src: /etc/nginx/sites-available/golb
+  notify: Restart nginx

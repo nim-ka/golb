@@ -1,6 +1,16 @@
 - name: Golb setup
   hosts: vmhosts
   tasks:
-    - name: Import Samba role
-      import_role:
+    - name: Update APT sources
+      become: yes
+      apt:
+        update_cache: yes
+
+    - import_role:
         name: samba
+
+    - import_role:
+        name: nginx
+
+    - import_role:
+        name: motd

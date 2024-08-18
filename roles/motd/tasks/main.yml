@@ -1,0 +1,5 @@
+- name: Copy MOTD
+  become: yes
+  copy:
+    src: roles/motd/files/motd
+    dest: /etc/motd
