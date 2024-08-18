@@ -1,8 +1,11 @@
-- name: Install Samba
+- name: Install Samba and wsdd
   become: yes
   apt:
-    name: samba
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - samba
+    - wsdd
 
 - name: Copy Samba configuration file
   become: yes
