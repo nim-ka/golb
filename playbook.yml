@@ -1,5 +1,5 @@
 - name: Golb setup
-  hosts: vmhosts
+  hosts: all
   tasks:
     - name: Update APT sources
       become: yes
