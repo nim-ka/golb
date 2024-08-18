@@ -6,8 +6,12 @@
       apt:
         update_cache: yes
 
-    - import_role:
-        name: share
+    - name: Create share directory
+      become: yes
+      file:
+        path: "{{ share_dir }}"
+        state: directory
+        mode: a+rwx
 
     - import_role:
         name: samba
